@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-registration',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationPage implements OnInit {
 
-  constructor() { }
-
+  constructor(private router: Router, public navCtrl: NavController) { }
+  emailAdress;
+  password;
+  confirmPassword;
+  lastName;
+  firstName;
+  register() {
+    if (this.emailAdress in window.localStorage) {
+    } else {
+      if (this.password === this.confirmPassword) {
+      }
+      this.navCtrl.navigateRoot('tabs/login');
+    }
+  }
   ngOnInit() {
   }
 
