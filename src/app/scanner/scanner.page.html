@@ -5,5 +5,9 @@
 </ion-header>
 
 <ion-content padding>
-
+<ion-button (click)="encodebarcode()">encode</ion-button>
+  <ion-button (click)="scanbarcode()">Scan</ion-button>
+<div *ngIf="scannerData.text">
+  scanned data : {{scannerData.text}}
+</div>
 </ion-content>
