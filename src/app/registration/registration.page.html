@@ -5,29 +5,29 @@
         <h4>Registration</h4>
       </div>
       <div padding>
+        <!--<ion-item>-->
+          <!--<ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstName"></ion-input>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item>-->
+          <!--<ion-input type="text" placeholder="Last Name" [(ngModel)]="user.lastName"></ion-input>-->
+        <!--</ion-item>-->
+
         <ion-item>
-          <ion-input type="text" placeholder="First Name" [(ngModel)]="firstName"></ion-input>
+          <ion-input type="text" placeholder="Email Address" [(ngModel)]="user.emailAdress"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="text" placeholder="Last Name" [(ngModel)]="lastName"></ion-input>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-input type="text" placeholder="Email Address" [(ngModel)]="emailAdress"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input type="password"  placeholder="Confirm Password" [(ngModel)]="confirmPassword"></ion-input>
-        </ion-item>
-      </div>
+        <!--<ion-item>-->
+          <!--<ion-input type="password"  placeholder="Confirm Password" [(ngModel)]="user.confirmPassword"></ion-input>-->
+        <!--</ion-item>-->
+      <!--</div>-->
 
       <div padding>
-        <ion-button size="large"  type="submit" expand="block" (click)="register()">Regsiter</ion-button>
+        <ion-button size="large"  type="submit" expand="block" (click)="register(user)">Regsiter</ion-button>
       </div>
 
       <div padding text-center>

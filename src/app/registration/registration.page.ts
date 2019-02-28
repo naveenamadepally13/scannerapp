@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {NavController} from '@ionic/angular';
+import {User} from 'src/Model/users';
+import {AngularFireAuth} from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-registration',
@@ -8,19 +11,18 @@ import {NavController} from '@ionic/angular';
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
-
-  constructor(private router: Router, public navCtrl: NavController) { }
-  emailAdress;
-  password;
-  confirmPassword;
-  lastName;
-  firstName;
-  register() {
-    if (this.emailAdress in window.localStorage) {
-    } else {
-      if (this.password === this.confirmPassword) {
-      }
-      this.navCtrl.navigateRoot('tabs/login');
+  user = {} as User;
+  constructor(private router: Router, public navCtrl: NavController, public afAuth: AngularFireAuth) {
+  }
+  register(user: User) {
+    try {
+      this.afAuth.auth.createUserWithEmailAndPassword(user.emailAddress, user.password).then(function () {
+        alert('Created successfully, Now Login');
+      }).catch(() => {
+        alert('invalid email/password should be of 6 characters');
+      });
+    } catch (e) {
+      console.error(e);
     }
   }
   ngOnInit() {

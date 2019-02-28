@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
         this.router.navigateByUrl('tabs/home');
       } else {  }
     } else {
-      this.navCtrl.navigateRoot('tabs/registration');
+      this.navCtrl.navigateRoot('tabs/scanner');
     }
   }
   ngOnInit() {
