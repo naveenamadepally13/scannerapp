@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-scanner',
@@ -7,11 +7,12 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage {
-  private encodeData: String =  'hello all';
+  private encodeData: String ;
   private encodedData: any = {};
   private scannerData: any = {};
   constructor(private barcodeScanner: BarcodeScanner) { }
   encodebarcode() {
+    alert(this.encodeData);
     this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.encodeData).then(data => {
       console.log(data);
       this.encodedData = data;
