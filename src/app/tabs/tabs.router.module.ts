@@ -16,17 +16,17 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'register',
+        {
+        path: 'registration',
         children: [
           {
             path: '',
-            loadChildren: '../register/register.module#RegisterPageModule'
+            loadChildren: '../registration/registration.module#RegistrationPageModule'
           }
         ]
       },
       {
-        path: 'home',
+        path: 'scanner',
         children: [
           {
             path: '',
