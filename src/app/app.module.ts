@@ -12,8 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {LoginPageModule} from './login/login.module';
-import {RegistrationPageModule} from './registration/registration.module';
+
 
 const config = {
   apiKey: 'AIzaSyAB73hk8ugjIX2W3wyqIBhg2NGOIrQ2y3M',
