@@ -15,6 +15,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFirestore} from '@angular/fire/firestore';
 
 
+
 const config = {
   apiKey: 'AIzaSyAB73hk8ugjIX2W3wyqIBhg2NGOIrQ2y3M',
   authDomain: 'lab-5-9e7fb.firebaseapp.com',
