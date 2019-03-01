@@ -3,20 +3,11 @@
 <div>
   <h1 style="color: white;padding-top: 10px"><b>Bar code Scanner</b></h1>
 </div>
-
-  <div class="list ">
-    <label class="item item-input ">
-      <input type="text" class="textinput" placeholder="Enter text to generate barcode" [(ngModel)]="encodeData">
-    </label>
-  </div>
-  <div style="padding-top:10px">
-    <ion-button class="button button-full button-positive" (click)="encodebarcode()">encode</ion-button>
-  </div>
   <div style="padding-top:10px ">
     <ion-button class="button button-full button-positive" (click)="scanbarcode()">Scan</ion-button>
   </div>
 
-<div style="padding-top:10px " *ngIf="scannerData.text">
-  scanned data : {{scannerData.text}}
+<div style="padding-top:10px " *ngIf="scaneddataText">
+  scanned data : {{scaneddataText}}
 </div>
 </ion-grid>

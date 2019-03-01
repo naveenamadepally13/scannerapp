@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AngularFireDatabase  } from 'angularfire2/database';
+import {LoginUserService} from '../login-user.service';
+
 import {Observable} from 'rxjs';
 import * as firebase from 'firebase';
 
@@ -10,33 +12,20 @@ import * as firebase from 'firebase';
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage {
-  constructor(private barcodeScanner: BarcodeScanner, private angularFireDatabase: AngularFireDatabase) { }
-  private encodeData: String ;
-  private scannerData: any = {};
-    public scaneddata: any = {
-     'userid': String,
-      'encodeddata': String,
+  constructor(private barcodeScanner: BarcodeScanner, private angularFireDatabase: AngularFireDatabase, private loginUserService: LoginUserService) { }
+  private userid: String ;
+    private scaneddataText: String;
+    private saveData: any = {
+        'username' : this.userid,
+        'scannedData' : this.scaneddataText
     };
-items: Observable<any[]>;
-  encodebarcode() {
-      this.scaneddata.userid = 'neha';
-      this.scaneddata.encodeddata = this.encodeData;
-      const scanRef: firebase.database.Reference = firebase.database().ref('/scaneddata/');
-      scanRef.on('value', personSnapshot => {
-          this.items = personSnapshot.val();
-          console.log(this.items ) ;
-      });
-      this.angularFireDatabase.object(`/scaneddata/${this.scaneddata.userid}`).set(this.scaneddata);
-    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.encodeData).then(data => {
-      console.log(data);
-    }, (err) => {
-      console.log('Error occured : ' + err);
-    });
-  }
+
  scanbarcode() {
+     this.userid = this.loginUserService.userName;
    this.barcodeScanner.scan().then(barcodeData => {
      console.log('Barcode data', barcodeData);
-     this.scannerData = barcodeData;
+     this.scaneddataText = barcodeData.text;
+       this.angularFireDatabase.object(`/scaneddata/${this.userid}`).set(this.saveData);
    }).catch(err => {
      console.log('Error', err);
    });
