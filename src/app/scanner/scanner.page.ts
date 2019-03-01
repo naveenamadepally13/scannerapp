@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { AngularFireDatabase  } from 'angularfire2/database';
+import {Observable} from 'rxjs';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-scanner',
@@ -7,15 +10,25 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage {
+  constructor(private barcodeScanner: BarcodeScanner, private angularFireDatabase: AngularFireDatabase) { }
   private encodeData: String ;
-  private encodedData: any = {};
   private scannerData: any = {};
-  constructor(private barcodeScanner: BarcodeScanner) { }
+    public scaneddata: any = {
+     'userid': String,
+      'encodeddata': String,
+    };
+items: Observable<any[]>;
   encodebarcode() {
-    alert(this.encodeData);
+      this.scaneddata.userid = 'neha';
+      this.scaneddata.encodeddata = this.encodeData;
+      const scanRef: firebase.database.Reference = firebase.database().ref('/scaneddata/');
+      scanRef.on('value', personSnapshot => {
+          this.items = personSnapshot.val();
+          console.log(this.items ) ;
+      });
+      this.angularFireDatabase.object(`/scaneddata/${this.scaneddata.userid}`).set(this.scaneddata);
     this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.encodeData).then(data => {
       console.log(data);
-      this.encodedData = data;
     }, (err) => {
       console.log('Error occured : ' + err);
     });

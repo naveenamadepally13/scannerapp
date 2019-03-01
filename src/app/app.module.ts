@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFirestore} from '@angular/fire/firestore';
+
 
 const config = {
   apiKey: 'AIzaSyAB73hk8ugjIX2W3wyqIBhg2NGOIrQ2y3M',
@@ -31,6 +33,7 @@ const config = {
     StatusBar,
     SplashScreen,
     BarcodeScanner,
+    AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
