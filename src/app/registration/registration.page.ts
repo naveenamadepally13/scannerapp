@@ -55,7 +55,7 @@ export class RegistrationPage implements OnInit {
         this.users = userSnapshot.val();
         if (this.user.password === this.user.confirmPassword) {
           if (this.users[this.user.userName]) {
-            this.accountError();
+            // this.accountError();
           } else {
             this.angularFireDatabase.object(`/user/${this.user.userName}`).set(this.user);
             this.successAlert();

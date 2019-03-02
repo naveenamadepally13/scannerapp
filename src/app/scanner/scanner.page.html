@@ -1,13 +1,13 @@
 
 <ion-grid>
 <div>
-  <h1 style="color: white;padding-top: 10px"><b>Bar code Scanner</b></h1>
+  <h1 style="color: white;padding-top: 10px"><b>Bar Code Scanner</b></h1>
 </div>
   <div style="padding-top:10px ">
     <ion-button class="button button-full button-positive" (click)="scanbarcode()">Scan</ion-button>
   </div>
 
-<div style="padding-top:10px " *ngIf="scaneddataText">
-  scanned data : {{scaneddataText}}
+<div  style="padding-top:10px; color:white" *ngIf="scaneddataText">
+ <h2> Scanned Barcode Data : {{scaneddataText}} </h2>
 </div>
 </ion-grid>

@@ -44,6 +44,8 @@ export class LoginPage implements OnInit {
            if (this.users[this.user.userName]['password'] === this.user.password) {
              this.loggedInUser.userName = this.user.userName;
              this.router.navigateByUrl('tabs/scanner');
+           } else {
+             this.passwordError();
            }
         } else {
           this.accountError();
